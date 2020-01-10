@@ -1,0 +1,32 @@
+.tabs {
+  margin: 16px;
+  display: flex;
+
+  .inner {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .left {
+    margin: 0 10px 0 0;
+  }
+
+  .right {
+    margin: 0 0 0 10px;
+  }
+
+  .tab {
+    cursor: pointer;
+    background-color: #fff;
+    margin-right: 3px;
+    border-color: #fff;
+    border-radius: 1px;
+    padding: 0 12px;
+
+    &:hover {
+      box-shadow: 0 0 5px rgba(#000, 0.3);
+      color: #000;
+    }
+  }
+}

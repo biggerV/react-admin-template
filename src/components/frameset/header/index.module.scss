@@ -1,0 +1,38 @@
+.trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #1890ff;
+  }
+}
+
+.menu {
+  text-align: right;
+
+  .item {
+    padding: 0 12px;
+    display: inline-block;
+  }
+
+  .link {
+    cursor: pointer;
+    display: inline-block;
+
+    &:hover {
+      background-color: rgba(#000000, 0.01)
+    }
+
+    .icon {
+      font-size: 18px;
+    }
+  }
+
+  .avatar {
+    margin-right: 10px;
+  }
+
+}

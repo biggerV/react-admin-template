@@ -1,0 +1,28 @@
+:global {
+
+  .Fsider {
+    background-color: rgb(72, 83, 112);
+    box-shadow: 3px 0 5px rgba(89, 99, 124, 0.4);
+
+    .ant-menu-dark {
+      background-color: rgba(0, 0, 0, 0);
+
+      .ant-menu-item-selected {
+        background-color: rgb(75, 129, 253);
+      }
+
+      .ant-menu-inline {
+        &.ant-menu-sub {
+          background-color: rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+  }
+
+}
+
+.logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
