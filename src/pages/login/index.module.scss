@@ -1,0 +1,39 @@
+.login {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  .form {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 300px;
+    margin: -150px 0 0 -150px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(#000, 0.1);
+    border-radius: 2px;
+    box-sizing: border-box;
+
+    .submit {
+      width: 100%;
+    }
+
+    .helper {
+      &:after {
+        content: " ";
+        clear: both;
+        display: block;
+      }
+
+      .left {
+        float: left;
+      }
+
+      .right {
+        float: right;
+        text-align: right;
+      }
+    }
+  }
+}

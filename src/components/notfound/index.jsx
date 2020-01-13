@@ -2,7 +2,7 @@ import React from 'react'
 import { Empty, Typography } from 'antd'
 import notfoundIcon from 'src/static/icon-404.svg'
 
-const { Title, Text } = Typography
+const { Title } = Typography
 
 class NotFound extends React.Component {
 

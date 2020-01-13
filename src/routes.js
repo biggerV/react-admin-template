@@ -41,6 +41,7 @@ const getFlatRoutes = () => {
       } else {
         findRoute(item.routes)
       }
+      return null
     })
   }
   findRoute(routes)
@@ -54,6 +55,7 @@ function findRouteByPathname(pathanme) {
       route = item
       return true
     }
+    return null
   })
   return route
 }

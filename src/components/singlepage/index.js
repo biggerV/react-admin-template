@@ -1,9 +1,6 @@
 import React from 'react';
-import { Layout } from 'antd';
 import { Route, Switch } from 'react-router-dom'
 import appRoutes from 'src/routes'
-
-const { Content } = Layout;
 
 let allRoutes = [];
 
@@ -29,6 +26,7 @@ function renderRoute(theRoutes) {
         renderRoute(route.routes)
       }
     }
+    return null
   })
 }
 

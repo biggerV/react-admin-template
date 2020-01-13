@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './index.module.scss'
 import { Layout, Menu, Icon } from 'antd';
 import eventhub from '../events.js'
-import { Link } from 'react-router-dom'
 import appRoutes from 'src/routes'
 import { withRouter } from "react-router";
 
@@ -31,6 +30,7 @@ const createMenus = function (appRoutes) {
     const children = []
     route.routes.map(item => {
       children.push(createMenuItem(item))
+      return null
     })
     menuItemsVm.push(
       <SubMenu
@@ -56,6 +56,7 @@ const createMenus = function (appRoutes) {
           createSubMenu(item)
         }
       }
+      return null
     })
   }
 
@@ -97,6 +98,7 @@ class Fsidebar extends React.Component {
           pathname: item.path
         })
       }
+      return null
     })
   }
 
