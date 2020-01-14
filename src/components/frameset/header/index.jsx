@@ -91,7 +91,7 @@ class Fheader extends React.Component {
                 </div>
               </Dropdown>
               <div className={CLS([styles.item, styles.link])}>
-                <Tooltip placement="bottom" title="退出系统">
+                <Tooltip placement="left" title="退出系统">
                   <Icon type="poweroff" className={styles.icon} />
                 </Tooltip>
               </div>
