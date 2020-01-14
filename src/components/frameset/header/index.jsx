@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './index.module.scss'
 import { Layout, Avatar, Menu, Dropdown, Icon, Row, Col, Badge, Tooltip } from 'antd';
-import { CLS } from 'src/utils/util.js'
+import { CLS, authToken } from 'src/utils/util.js'
 import eventhub from '../events.js'
+import { withRouter } from 'react-router'
 
 const { Header } = Layout;
 
@@ -54,6 +55,11 @@ class Fheader extends React.Component {
     eventhub.$emit("collapsed", collapsed)
   };
 
+  logout = () => {
+    authToken.remove()
+    this.props.history.push("/login")
+  }
+
   render() {
     return (
       <Header style={{ background: '#fff', padding: 0 }}>
@@ -90,7 +96,7 @@ class Fheader extends React.Component {
                   <Icon type="global" className={styles.icon} />
                 </div>
               </Dropdown>
-              <div className={CLS([styles.item, styles.link])}>
+              <div className={CLS([styles.item, styles.link])} onClick={this.logout}>
                 <Tooltip placement="left" title="退出系统">
                   <Icon type="poweroff" className={styles.icon} />
                 </Tooltip>
@@ -103,4 +109,4 @@ class Fheader extends React.Component {
   }
 }
 
-export default Fheader
+export default withRouter(Fheader)

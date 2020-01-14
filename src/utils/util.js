@@ -54,3 +54,33 @@ export const CLS = function (classNames) {
   }
   return res
 }
+
+
+export const Session = function () {
+  const store = sessionStorage
+  this.set = (key, val) => {
+    return store.setItem(key, val)
+  }
+  this.remove = (key) => {
+    return store.removeItem(key)
+  }
+  this.get = (key) => {
+    return store.getItem(key)
+  }
+}
+
+// authToken
+const AuthToken = function () {
+  const session = new Session()
+  const key = 'authToken'
+  this.set = (val) => {
+    return session.set(key, val)
+  }
+  this.remove = () => {
+    return session.remove(key)
+  }
+  this.get = () => {
+    return session.get(key)
+  }
+}
+export const authToken = new AuthToken()

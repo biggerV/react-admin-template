@@ -3,6 +3,7 @@ import styles from './index.module.scss'
 import Logo from 'src/static/logo.svg'
 import { Form, Icon, Input, Button } from 'antd';
 import BgPic from 'src/static/bg.jpg'
+import { authToken } from 'src/utils/util'
 
 class Login extends React.Component {
 
@@ -11,7 +12,7 @@ class Login extends React.Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
-        sessionStorage.setItem("authToken", "123456")
+        authToken.set("666")
         this.props.history.push({
           pathname: '/dashboard'
         })
