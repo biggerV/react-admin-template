@@ -14,7 +14,7 @@ const getTabs = function () {
       })
     }}>
       <Badge dot={true} color={tabs[i].checked ? "gold" : "lightgray"}></Badge>
-      {tabs[i].title}
+      <span className={styles.title}>{tabs[i].title}</span>
     </Tag>)
   }
   return list

@@ -10,23 +10,29 @@
 
   .left {
     margin: 0 10px 0 0;
+    background-color: #fff;
+    border-color: rgba(#000, 0.1);
   }
 
   .right {
     margin: 0 0 0 10px;
+    background-color: #fff;
+    border-color: rgba(#000, 0.1);
   }
 
   .tab {
     cursor: pointer;
     background-color: #fff;
     margin-right: 3px;
-    border-color: #fff;
-    border-radius: 1px;
-    padding: 0 12px;
+    border-color: rgba(#000, 0.1);
+    padding: 0 8px 0 12px;
 
     &:hover {
-      box-shadow: 0 0 5px rgba(#000, 0.3);
-      color: #000;
+      font-weight: bold;
+    }
+
+    .title {
+      padding-right: 5px;
     }
   }
 }
