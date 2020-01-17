@@ -5,6 +5,8 @@ import Flayout from 'src/components/frameset/layout'
 import Spage from 'src/components/singlepage'
 import { findRouteByPathname } from 'src/routes'
 import NotFound from 'src/components/notfound'
+import { authToken } from 'src/utils/util.js'
+import { message } from 'antd'
 
 class RenderFrm extends React.Component {
 
@@ -12,7 +14,7 @@ class RenderFrm extends React.Component {
     const history = this.props.history
     const location = history.location
     const curRoute = findRouteByPathname(location.pathname)
-    const isLogin = sessionStorage.getItem('authToken')
+    const isLogin = authToken.get()
     console.log("location", location)
 
     if (location.pathname === "/") {
@@ -38,6 +40,7 @@ class RenderFrm extends React.Component {
     }
 
     if (curRoute.auth !== false && !isLogin) {
+      message.warning("登录已过期，请重新登陆！")
       return (
         <Redirect to={{
           pathname: '/login'

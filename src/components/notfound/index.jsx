@@ -1,8 +1,6 @@
 import React from 'react'
-import { Empty, Typography } from 'antd'
+import { Empty } from 'antd'
 import notfoundIcon from 'src/static/icon-404.svg'
-
-const { Title } = Typography
 
 class NotFound extends React.Component {
 
@@ -15,7 +13,7 @@ class NotFound extends React.Component {
           height: 150
         }}
         description={
-          <Title level={4} type="secondary">您要访问的页面不存在</Title>
+          <span style={{ fontSize: '18px' }}>您要访问的页面不存在</span>
         }
       ></Empty>
     )

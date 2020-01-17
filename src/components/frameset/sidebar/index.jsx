@@ -3,7 +3,7 @@ import styles from './index.module.scss'
 import { Layout, Menu, Icon } from 'antd';
 import eventhub from '../events.js'
 import appRoutes from 'src/routes'
-import { withRouter } from "react-router";
+import { withRouter, matchPath } from "react-router";
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
@@ -12,8 +12,8 @@ const createMenus = function (appRoutes) {
   const menuItemsVm = []
   const flatRoutes = []
 
-  const createMenuItem = function (route) {
-    flatRoutes.push(route)
+  const createMenuItem = function (route, parent = null) {
+    flatRoutes.push({ ...route, parent })
     let iconVm = null
     if (route.icon) {
       iconVm = <Icon type={route.icon} />
@@ -29,7 +29,7 @@ const createMenus = function (appRoutes) {
   const createSubMenu = function (route) {
     const children = []
     route.routes.map(item => {
-      children.push(createMenuItem(item))
+      children.push(createMenuItem(item, route.name))
       return null
     })
     menuItemsVm.push(
@@ -70,7 +70,9 @@ const { menuItemsVm, flatRoutes } = createMenus(appRoutes)
 class Fsidebar extends React.Component {
 
   state = {
-    collapsed: false
+    collapsed: false,
+    selectedKey: "",
+    openKey: ""
   }
 
   //--- eventhub的正确用法 ->>>>
@@ -84,6 +86,8 @@ class Fsidebar extends React.Component {
         collapsed: val
       })
     })
+
+    this.matchMenuPath()
   }
 
   componentWillUnmount() {
@@ -94,6 +98,9 @@ class Fsidebar extends React.Component {
   handleMenuClick = ({ key }) => {
     flatRoutes.some(item => {
       if (item.name === key) {
+        this.setState({
+          selectedKey: item.name
+        })
         this.props.history.push({
           pathname: item.path
         })
@@ -102,11 +109,42 @@ class Fsidebar extends React.Component {
     })
   }
 
+  matchMenuPath() {
+    const pathname = window.location.pathname
+    flatRoutes.some(item => {
+      const match = matchPath(pathname, {
+        path: item.path,
+        exact: item.exact,
+        strict: false
+      });
+      if (match) {
+        this.setState({
+          selectedKey: item.name,
+          openKey: item.parent
+        })
+      }
+      return !!match
+    })
+  }
+
   render() {
+    const selectedKeys = this.state.selectedKey ? [this.state.selectedKey] : []
+    const openKeys = [this.state.openKey]
+
+    if (this.state.openKey === "") {
+      return <></>
+    }
+
     return (
       <Sider trigger={null} collapsible collapsed={this.state.collapsed} className="Fsider">
         <div className={styles.logo} />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={[]} onClick={this.handleMenuClick}>
+        <Menu
+          theme="dark"
+          mode="inline"
+          selectedKeys={selectedKeys}
+          defaultOpenKeys={openKeys}
+          onClick={this.handleMenuClick}
+        >
           {menuItemsVm}
         </Menu>
       </Sider>

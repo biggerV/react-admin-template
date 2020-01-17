@@ -1,6 +1,14 @@
+.header {
+  background-color: #fff;
+  padding: 0;
+  box-shadow: 0 5px 5px rgba(#000, 0.05);
+  height: 50px;
+  line-height: 50px;
+}
+
 .trigger {
   font-size: 18px;
-  line-height: 64px;
+  line-height: 50px;
   padding: 0 24px;
   cursor: pointer;
   transition: color 0.3s;

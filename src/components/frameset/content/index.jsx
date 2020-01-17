@@ -14,6 +14,7 @@ function createRoutes(appRoutes) {
       <Route
         key={route.name}
         path={route.path}
+        exact={route.exact}
         render={props => (
           // pass the sub-routes down to keep nesting
           <route.component {...props} />

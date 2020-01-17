@@ -7,6 +7,7 @@ const routes = [
     title: "用户登录",
     name: "Login",
     path: "/login",
+    exact: false,
     component: Login,
     auth: false
   },
@@ -14,9 +15,18 @@ const routes = [
     title: "控制面板",
     name: "Dashboard",
     path: "/dashboard",
+    exact: false,
     component: Dashboard,
     icon: "dashboard"
   },
+  // {
+  //   title: "列表页",
+  //   name: "Tables",
+  //   icon: "table",
+  //   path: "/tables/normal",
+  //   exact: false,
+  //   component: TablesNormal
+  // }
   {
     title: "列表页",
     name: "Tables",

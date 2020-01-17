@@ -62,7 +62,7 @@ class Fheader extends React.Component {
 
   render() {
     return (
-      <Header style={{ background: '#fff', padding: 0 }}>
+      <Header className={styles.header}>
         <Row>
           <Col span={6}>
             <Icon
