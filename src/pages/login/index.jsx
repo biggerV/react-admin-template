@@ -12,9 +12,20 @@ class Login extends React.Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+
+        // TODO：登录接口请求，返回结果
+
+        // 登录成功后，在本地存authToken
         authToken.set("666")
+
+        // redirectTo 登录后跳转到的页面，没有则进入首页
+        const locState = this.props.history.location.state
+        let pathName = '/'
+        if (locState && locState.redirectTo) {
+          pathName = locState.redirectTo
+        }
         this.props.history.push({
-          pathname: '/dashboard'
+          pathname: pathName
         })
       }
     });

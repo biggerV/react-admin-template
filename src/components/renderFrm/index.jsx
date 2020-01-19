@@ -8,6 +8,18 @@ import NotFound from 'src/components/notfound'
 import { authToken } from 'src/utils/util.js'
 import { message } from 'antd'
 
+const NotFoundTip = (
+  <NotFound style={
+    {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      marginTop: '-100px',
+      marginLeft: '-100px'
+    }
+  }></NotFound>
+)
+
 class RenderFrm extends React.Component {
 
   render() {
@@ -26,24 +38,17 @@ class RenderFrm extends React.Component {
     }
 
     if (!curRoute) {
-      return (
-        <NotFound style={
-          {
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            marginTop: '-100px',
-            marginLeft: '-100px'
-          }
-        }></NotFound>
-      )
+      return <NotFoundTip></NotFoundTip>
     }
 
     if (curRoute.auth !== false && !isLogin) {
       message.warning("登录已过期，请重新登陆！")
       return (
         <Redirect to={{
-          pathname: '/login'
+          pathname: '/login',
+          state: {
+            redirectTo: curRoute.path
+          }
         }}></Redirect>
       )
     }
