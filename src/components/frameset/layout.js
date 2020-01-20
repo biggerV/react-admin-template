@@ -5,9 +5,33 @@ import { Fheader, Fsidebar, Fcontent, Ftabs } from 'src/components/frameset'
 
 class Flayout extends React.Component {
 
+  state = {
+    win: {
+      height: WIN.height
+    }
+  }
+
+  getWinSize = (e) => {
+    WIN.width = e.target.innerWidth
+    WIN.height = e.target.innerHeight
+    this.setState({
+      win: {
+        height: WIN.height
+      }
+    })
+  }
+
+  componentDidMount() {
+    window.addEventListener("resize", this.getWinSize)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.getWinSize)
+  }
+
   render() {
     return (
-      <Layout style={{ height: WIN.height + 'px' }}>
+      <Layout style={{ height: this.state.win.height + 'px' }}>
         <Fsidebar></Fsidebar>
         <Layout>
           <Fheader></Fheader>

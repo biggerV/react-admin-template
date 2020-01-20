@@ -20,6 +20,10 @@ const NotFoundTip = (
   }></NotFound>
 )
 
+const loginTip = function () {
+  message.warning("登录已过期，请重新登陆！")
+}
+
 class RenderFrm extends React.Component {
 
   render() {
@@ -42,14 +46,13 @@ class RenderFrm extends React.Component {
     }
 
     if (curRoute.auth !== false && !isLogin) {
-      message.warning("登录已过期，请重新登陆！")
       return (
         <Redirect to={{
           pathname: '/login',
           state: {
             redirectTo: curRoute.path
           }
-        }}></Redirect>
+        }}>{loginTip()}</Redirect>
       )
     }
 
