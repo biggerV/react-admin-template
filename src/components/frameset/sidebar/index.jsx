@@ -136,7 +136,7 @@ class Fsidebar extends React.Component {
     }
 
     return (
-      <Sider trigger={null} collapsible collapsed={this.state.collapsed} className="Fsider">
+      <Sider trigger={null} collapsible collapsed={this.state.collapsed} className="Fsider" collapsedWidth="50">
         <div className={styles.logo} />
         <Menu
           theme="dark"

@@ -5,7 +5,7 @@ import Flayout from 'src/components/frameset/layout'
 import Spage from 'src/components/singlepage'
 import { findRouteByPathname } from 'src/routes'
 import NotFound from 'src/components/notfound'
-import { authToken } from 'src/utils/util.js'
+import { authToken, nextTick } from 'src/utils/util.js'
 import { message } from 'antd'
 
 const NotFoundTip = (
@@ -19,10 +19,6 @@ const NotFoundTip = (
     }
   }></NotFound>
 )
-
-const loginTip = function () {
-  message.warning("登录已过期，请重新登陆！")
-}
 
 class RenderFrm extends React.Component {
 
@@ -45,14 +41,17 @@ class RenderFrm extends React.Component {
       return <NotFoundTip></NotFoundTip>
     }
 
+    // authToken过期应设置 为 "" -空，退出登录应删除
+    // 为空串则提示过期，否则不提示
     if (curRoute.auth !== false && !isLogin) {
+      isLogin === "" && nextTick(() => { message.warning("登录已过期，请重新登陆！") })
       return (
         <Redirect to={{
           pathname: '/login',
           state: {
             redirectTo: curRoute.path
           }
-        }}>{loginTip()}</Redirect>
+        }}></Redirect>
       )
     }
 

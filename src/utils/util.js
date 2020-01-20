@@ -84,3 +84,12 @@ const AuthToken = function () {
   }
 }
 export const authToken = new AuthToken()
+
+// 在render里面使用message.warning("xxx")这些组件会报
+// Warning: Render methods should be a pure function of props and state; triggering nested component updates from render is not allowed
+// 使用下面这个方法可以规避此警告
+export const nextTick = function (cb) {
+  setTimeout(() => {
+    cb && cb()
+  }, 0)
+}
