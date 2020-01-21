@@ -7,6 +7,7 @@ import { findRouteByPathname } from 'src/routes'
 import NotFound from 'src/components/notfound'
 import { authToken, nextTick } from 'src/utils/util.js'
 import { message } from 'antd'
+import { basePath, homeRoute } from 'src/routes'
 
 const NotFoundTip = (
   <NotFound style={
@@ -29,14 +30,16 @@ class RenderFrm extends React.Component {
     const isLogin = authToken.get()
     console.log("location", location)
 
-    if (location.pathname === "/") {
+    // 如果直接输入根路由则跳转到首页
+    if (location.pathname === basePath) {
       return (
         <Redirect to={{
-          pathname: '/dashboard'
+          pathname: homeRoute.path
         }}></Redirect>
       )
     }
 
+    // 404
     if (!curRoute) {
       return <NotFoundTip></NotFoundTip>
     }
