@@ -33,13 +33,12 @@ class Flayout extends React.Component {
 
   render() {
     const isHome = this.props.history.location.pathname === homeRoute.path
-    const FtabsCp = !isHome && <Ftabs />
     return (
       <Layout style={{ height: this.state.win.height + 'px' }}>
         <Fsidebar></Fsidebar>
         <Layout>
           <Fheader></Fheader>
-          {FtabsCp}
+          <Ftabs show={!isHome}></Ftabs>
           <Fcontent></Fcontent>
         </Layout>
       </Layout>

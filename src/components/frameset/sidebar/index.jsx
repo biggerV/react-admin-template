@@ -81,10 +81,16 @@ class Fsidebar extends React.Component {
   // 否则调用监听事件内的setState会报错，因为这个this是旧组件的实例
   // 不及时销毁会有内存泄露的风险（每次修改组件重新渲染都会在内存中增加一个组件实例而得不到释放）
   componentDidMount() {
+    // 监听收缩侧边栏事件
     eventhub.$on("collapsed", val => {
       this.setState({
         collapsed: val
       })
+    })
+
+    // 监听tab切换事件，以进行同步选中侧栏菜单
+    eventhub.$on("tabs-menu-change", val => {
+      this.matchMenuPath()
     })
 
     this.matchMenuPath()
@@ -92,6 +98,7 @@ class Fsidebar extends React.Component {
 
   componentWillUnmount() {
     eventhub.$destroy("collapsed")
+    eventhub.$destroy("tabs-menu-change")
   }
   //---------------------<<<<
 
@@ -104,6 +111,8 @@ class Fsidebar extends React.Component {
         this.props.history.push({
           pathname: item.path
         })
+
+        eventhub.$emit("sidebar-menu-selected", item)
       }
       return null
     })

@@ -1,6 +1,3 @@
-// import Login from 'src/pages/login'
-// import Dashboard from 'src/pages/dashboard'
-// import { TablesNormal } from 'src/pages/tables'
 import lazyLoad from 'src/components/lazyLoad'
 
 const basePath = "/"
@@ -54,6 +51,19 @@ const routes = [
         name: "TablesNormal",
         path: `${basePath}tables/normal`,
         component: lazyLoad(() => import('src/pages/tables/normal')),
+      }
+    ]
+  },
+  {
+    title: "列表页2",
+    name: "Tables2",
+    icon: "table",
+    routes: [
+      {
+        title: "普通列表2",
+        name: "TablesNormal2",
+        path: `${basePath}tables/normal2`,
+        component: lazyLoad(() => import('src/pages/tables/normal2')),
       }
     ]
   }
