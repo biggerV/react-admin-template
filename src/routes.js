@@ -26,10 +26,10 @@ const routes = [
   },
   {
     title: "控制面板",
-    name: "Dashboard",
-    path: `${basePath}dashboard`,
+    name: "Home",
+    path: `${basePath}home`,
     exact: false,
-    component: lazyLoad(() => import('src/pages/dashboard')),
+    component: lazyLoad(() => import('src/pages/home')),
     icon: "dashboard",
     home: true
   },
@@ -54,19 +54,6 @@ const routes = [
       }
     ]
   },
-  {
-    title: "列表页2",
-    name: "Tables2",
-    icon: "table",
-    routes: [
-      {
-        title: "普通列表2",
-        name: "TablesNormal2",
-        path: `${basePath}tables/normal2`,
-        component: lazyLoad(() => import('src/pages/tables/normal2')),
-      }
-    ]
-  }
 ]
 
 const getFlatRoutes = () => {

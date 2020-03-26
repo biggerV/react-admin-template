@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './index.module.scss'
-import { Table, Form, Row, Col, Input, Button, Icon } from 'antd'
+import { Table, Form, Row, Col, Input, Button, Icon, Card } from 'antd'
 
 const dataSource = [
   {
@@ -83,24 +83,26 @@ class Normal extends React.Component {
 
   render() {
     return (
-      <div>
-        <Form onSubmit={this.handleSearch} className={styles.form}>
-          <Row gutter={24}>{this.getFields()}</Row>
-          <Row>
-            <Col span={24}>
-              <Button type="primary" htmlType="submit">
-                查询
+      <div className="wrap">
+        <Card>
+          <Form onSubmit={this.handleSearch} className={styles.form}>
+            <Row gutter={24}>{this.getFields()}</Row>
+            <Row>
+              <Col span={24}>
+                <Button type="primary" htmlType="submit">
+                  查询
               </Button>
-              <Button style={{ marginLeft: 8 }} onClick={this.handleReset}>
-                重置
+                <Button style={{ marginLeft: 8 }} onClick={this.handleReset}>
+                  重置
               </Button>
-              <Button type="link" onClick={this.toggle} className={styles.more}>
-                {this.state.expand ? '隐藏更多' : '显示更多'} <Icon type={this.state.expand ? 'up' : 'down'} />
-              </Button>
-            </Col>
-          </Row>
-        </Form>
-        <Table dataSource={dataSource} columns={columns} />
+                <Button type="link" onClick={this.toggle} className={styles.more}>
+                  {this.state.expand ? '隐藏更多' : '显示更多'} <Icon type={this.state.expand ? 'up' : 'down'} />
+                </Button>
+              </Col>
+            </Row>
+          </Form>
+          <Table dataSource={dataSource} columns={columns} />
+        </Card>
       </div>
     )
   }
